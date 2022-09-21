@@ -1,3 +1,7 @@
+// url: https://leetcode.com/problems/sum-of-even-numbers-after-queries/
+// date: 24 sep. 2022
+// do you remember~
+
 fn sum_even_after_queries (mut nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<i32> {
     let mut answer = vec![];
     for q in queries.iter() {
