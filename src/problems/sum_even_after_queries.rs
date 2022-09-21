@@ -1,11 +1,10 @@
-fn sum_even_after_queries (nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<i32> {
+fn sum_even_after_queries (mut nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<i32> {
     let mut answer = vec![];
-    let mut working_nums = nums.to_vec();
     for q in queries.iter() {
         let (figure, index) = (q[0], q[1]);
-        working_nums[index as usize] += figure;
+        nums[index as usize] += figure;
         let mut even_sums = 0;
-        for val in &working_nums {
+        for val in &nums {
             if val % 2 == 0 { even_sums += val };
         }
         answer.push(even_sums);
