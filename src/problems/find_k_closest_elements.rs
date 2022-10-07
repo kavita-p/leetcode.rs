@@ -2,7 +2,6 @@
 // date: 29 sep. 2022
 // adapted from forum solution
 
-
 pub fn find_closest_elements(arr: Vec<i32>, k: i32, x: i32) -> Vec<i32> {
     let k = k as usize;
     let mut l = 0;
@@ -23,7 +22,7 @@ mod test {
     use super::*;
 
     #[test]
-    fn leetcode_e1 () {
+    fn leetcode_e1() {
         let arr = vec![1, 2, 3, 4, 5];
         let k = 4;
         let x = 3;
