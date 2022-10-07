@@ -1,36 +1,31 @@
+// url: https://leetcode.com/problems/time-based-key-value-store
+// date: 6 oct. 2022
+// thanks to forum solutions for the idea to use a vec and binary-search it
+// previous HashMap<String, HashMap<i32, String>> worked
+// but was too slow
+
 use std::collections::HashMap;
 
+#[derive(Default)]
 struct TimeMap {
-    map: HashMap<String, HashMap<i32, String>>,
+    map: HashMap<String, Vec<(i32, String)>>,
 }
 
 impl TimeMap {
     fn new() -> Self {
-        TimeMap {
-            map: HashMap::new(),
-        }
+        Default::default()
     }
 
     fn set(&mut self, key: String, value: String, timestamp: i32) {
-        let value_map = self.map.entry(key).or_insert_with(HashMap::new);
-        value_map.insert(timestamp, value);
+        self.map.entry(key).or_default().push((timestamp, value));
     }
 
-    fn get(&mut self, key: String, timestamp: i32) -> String {
-        if let Some(val) = &self.map.get(&key) {
-            if let Some(stamped_val) = val.get(&timestamp) {
-                stamped_val.to_string()
-            } else {
-                let stamps = val.keys();
-                if let Some(most_recent) = stamps.filter(|&t| *t < timestamp).max() {
-                    if let Some(stamped_val) = val.get(most_recent) {
-                        stamped_val.to_string()
-                    } else {
-                        "".to_string()
-                    }
-                } else {
-                    "".to_string()
-                }
+    fn get(&self, key: String, timestamp: i32) -> String {
+        if let Some(val) = self.map.get(&key) {
+            match val.binary_search_by_key(&timestamp, |&(t, _)| t) {
+                Ok(i) => val[i].1.clone(),
+                Err(i) if i > 0 => val[i - 1].1.clone(),
+                _ => "".to_string(),
             }
         } else {
             "".to_string()
