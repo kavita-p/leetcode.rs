@@ -1,7 +1,7 @@
 // url: https://leetcode.com/problems/reverse-words-in-a-string-iii/
 // date: 25 sep. 2022
 
-struct Solution {}
+struct Solution;
 
 impl Solution {
     fn reverse_words(s: String) -> String {

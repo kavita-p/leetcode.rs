@@ -3,7 +3,7 @@
 
 use std::collections::HashSet;
 
-struct Solution {}
+struct Solution;
 
 impl Solution {
     pub fn check_if_pangram(sentence: String) -> bool {

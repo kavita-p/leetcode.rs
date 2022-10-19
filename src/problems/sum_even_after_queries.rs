@@ -2,7 +2,7 @@
 // date: 24 sep. 2022
 // do you remember~
 
-struct Solution {}
+struct Solution;
 
 impl Solution {
     fn sum_even_after_queries(mut nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<i32> {

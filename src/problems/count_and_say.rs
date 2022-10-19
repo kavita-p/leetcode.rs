@@ -1,7 +1,7 @@
 // 18 oct. 2022
 // from https://leetcode.com/problems/count-and-say/
 
-struct Solution {}
+struct Solution;
 
 impl Solution {
     pub fn count_and_say(n: i32) -> String {

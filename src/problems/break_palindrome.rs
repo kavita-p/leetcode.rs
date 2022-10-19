@@ -1,7 +1,7 @@
 // url: https://leetcode.com/problems/break-a-palindrome
 // date: 10 oct. 2022
 
-struct Solution {}
+struct Solution;
 
 impl Solution {
     pub fn break_palindrome(palindrome: String) -> String {
