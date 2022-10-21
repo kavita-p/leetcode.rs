@@ -1,5 +1,6 @@
 mod break_palindrome;
 mod check_if_pangram;
+mod contains_duplicate_ii;
 mod count_and_say;
 mod find_k_closest_elements;
 mod int_to_roman;
