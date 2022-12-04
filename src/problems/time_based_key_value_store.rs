@@ -13,7 +13,7 @@ struct TimeMap {
 
 impl TimeMap {
     fn new() -> Self {
-        Default::default()
+        Self::default()
     }
 
     fn set(&mut self, key: String, value: String, timestamp: i32) {
@@ -21,15 +21,13 @@ impl TimeMap {
     }
 
     fn get(&self, key: String, timestamp: i32) -> String {
-        if let Some(val) = self.map.get(&key) {
+        self.map.get(&key).map_or_else(String::new, |val| {
             match val.binary_search_by_key(&timestamp, |&(t, _)| t) {
                 Ok(i) => val[i].1.clone(),
                 Err(i) if i > 0 => val[i - 1].1.clone(),
-                _ => "".to_string(),
+                _ => String::new(),
             }
-        } else {
-            "".to_string()
-        }
+        })
     }
 }
 

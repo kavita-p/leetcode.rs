@@ -10,9 +10,10 @@ impl Solution {
     pub fn contains_nearby_duplicate(nums: Vec<i32>, k: i32) -> bool {
         nums.iter()
             .enumerate()
-            .scan(HashMap::new(), |map, (i, num)| match map.insert(num, i) {
-                Some(j) => Some(i - j <= k as usize),
-                None => Some(false),
+            .scan(HashMap::new(), |map, (i, num)| {
+                map.insert(num, i).map_or(Some(false), |j| {
+                    Some(i - j <= usize::try_from(k).unwrap_or_default())
+                })
             })
             .any(|is_valid_dupe| is_valid_dupe)
     }

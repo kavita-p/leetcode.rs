@@ -20,12 +20,12 @@ impl Solution {
             (4, "IV"),
             (1, "I"),
         ];
-        let mut numerus = "".to_string();
-        for &(value, roman) in dict.iter() {
+        let mut numerus = String::new();
+        for &(value, roman) in &dict {
             let roman_digits = num / value;
             if roman_digits > 0 {
-                numerus.push_str(&roman.repeat(roman_digits as usize));
-                num = num % value;
+                numerus.push_str(&roman.repeat(usize::try_from(roman_digits).unwrap()));
+                num %= value;
             }
         }
         numerus

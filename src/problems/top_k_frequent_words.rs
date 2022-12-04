@@ -27,7 +27,7 @@ impl Solution {
             // drop counts
             .map(|(_count, w)| w)
             // :)
-            .take(k as usize)
+            .take(k.try_into().unwrap_or_default())
             .collect()
     }
 }

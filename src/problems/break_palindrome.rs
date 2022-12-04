@@ -6,7 +6,7 @@ struct Solution;
 impl Solution {
     pub fn break_palindrome(palindrome: String) -> String {
         if palindrome.len() <= 1 {
-            return String::from("");
+            return String::new();
         }
 
         let mut bytes = palindrome.as_bytes().to_vec();
@@ -38,6 +38,6 @@ mod test {
 
     #[test]
     fn leetcode_e2() {
-        assert_eq!(Solution::break_palindrome("a".to_string()), "".to_string())
+        assert_eq!(Solution::break_palindrome("a".to_string()), String::new())
     }
 }

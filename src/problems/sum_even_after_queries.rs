@@ -7,13 +7,13 @@ struct Solution;
 impl Solution {
     fn sum_even_after_queries(mut nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<i32> {
         let mut answer = vec![];
-        for q in queries.iter() {
+        for q in &queries {
             let (figure, index) = (q[0], q[1]);
-            nums[index as usize] += figure;
+            nums[usize::try_from(index).unwrap_or_default()] += figure;
             let mut even_sums = 0;
             for val in &nums {
                 if val % 2 == 0 {
-                    even_sums += val
+                    even_sums += val;
                 };
             }
             answer.push(even_sums);
