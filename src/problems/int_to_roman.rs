@@ -24,7 +24,7 @@ impl Solution {
         for &(value, roman) in &dict {
             let roman_digits = num / value;
             if roman_digits > 0 {
-                numerus.push_str(&roman.repeat(usize::try_from(roman_digits).unwrap()));
+                numerus.push_str(&roman.repeat(roman_digits.try_into().unwrap()));
                 num %= value;
             }
         }

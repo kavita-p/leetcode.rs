@@ -11,9 +11,8 @@ impl Solution {
         nums.iter()
             .enumerate()
             .scan(HashMap::new(), |map, (i, num)| {
-                map.insert(num, i).map_or(Some(false), |j| {
-                    Some(i - j <= usize::try_from(k).unwrap_or_default())
-                })
+                map.insert(num, i)
+                    .map_or(Some(false), |j| Some(i - j <= k.try_into().unwrap()))
             })
             .any(|is_valid_dupe| is_valid_dupe)
     }
